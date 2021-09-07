@@ -16,7 +16,6 @@ def applyMetadataToSingeFile(filename):
 def applyMetadataToFolder(folderName):
     prefix = "./"
     folder = prefix + folderName
-    print(os.listdir(folder))
     os.chdir(folder)
     for i in os.listdir():
         if i.find("-") == -1 and i.find(".mp3") == -1:
