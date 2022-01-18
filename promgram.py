@@ -18,16 +18,19 @@ def applyMetadataToFolder(folderName):
     folder = prefix + folderName
     os.chdir(folder)
     for i in os.listdir():
-        if i.find("-") == -1 and i.find(".mp3") == -1:
+        try:            
+            if i.find("-") == -1 and i.find(".mp3") == -1:
+                continue
+            artist = i.split("-")[0]
+            song = i.split("-")[1][:-4]
+            audiof = eyed3.load(i)
+            if not audiof.tag:
+                audiof.initTag()
+            audiof.tag.artist = artist
+            audiof.tag.title = song
+            audiof.tag.save()
+        except:
             continue
-        artist = i.split("-")[0]
-        song = i.split("-")[1][:-4]
-        audiof = eyed3.load(i)
-        if not audiof.tag:
-            audiof.initTag()
-        audiof.tag.artist = artist
-        audiof.tag.title = song
-        audiof.tag.save()
 
 
 choice = input("Apply metadata on Folder/File: ")
