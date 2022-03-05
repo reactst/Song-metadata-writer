@@ -1,6 +1,8 @@
 import eyed3
 import os
-
+'''
+DODAJ LOG I MEMUSG I EXC
+'''
 
 def applyMetadataToSingeFile(filename):
     artist = filename.split("-")[0]
