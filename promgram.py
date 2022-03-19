@@ -48,4 +48,3 @@ elif choice == "file":
 else:
     print ("Incorrect name")
 
-//NESTO
